@@ -23,4 +23,12 @@ class UserManagementViewModel {
             }
         })
     }
+
+    func deleteUserWithId(_ id: String) {
+        APIService.deleteUser(id: id) { success in
+            if !success {
+                fatalError("Error deleting user with id \(id)")
+            }
+        }
+    }
 }

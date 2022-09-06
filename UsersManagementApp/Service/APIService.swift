@@ -36,4 +36,28 @@ class APIService {
                }.resume()
             }
     }
+
+    static func deleteUser(id: String, complete: @escaping ( _ success: Bool)->()) {
+        guard let deleteUserUrl = URL(string: "https://hello-world.innocv.com/api/User/\(id)") else { return }
+            var request = URLRequest(url: deleteUserUrl)
+            request.httpMethod = "DELETE"
+            DispatchQueue.global().async {
+               URLSession.shared.dataTask(with: request){
+                   data, response, error in
+
+                   if error != nil {
+                       print(error?.localizedDescription)
+                       return
+                   }
+
+                   if let data = data {
+                       do {
+                           complete(true)
+                       } catch{
+                           print("Error fetching users \(error)")
+                       }
+                   }
+               }.resume()
+            }
+    }
 }

@@ -23,7 +23,21 @@ extension ViewController: UITableViewDataSource {
         unwrappedCell.nameLabel.text = user.name
         unwrappedCell.idLabel.text = user.id
         unwrappedCell.birthdayLabel.text = user.birthDate
-        
+
         return unwrappedCell
+    }
+
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            tableView.beginUpdates()
+            self.viewModel.deleteUserWithId((tableView.cellForRow(at: indexPath) as? CustomCell)?.idLabel.text ?? "")
+            self.viewModel.userList.value.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.endUpdates()
+        }
     }
 }
