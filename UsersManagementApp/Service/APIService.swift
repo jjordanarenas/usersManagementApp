@@ -8,7 +8,7 @@
 import Foundation
 
 class APIService {
-    func fetchUsers(complete: @escaping ( _ success: Bool, _ userList: [User], _ error: Error? )->()) {
+    static func fetchUsers(complete: @escaping ( _ success: Bool, _ userList: [User], _ error: Error? )->()) {
         guard let fetchUsersUrl = URL(string: "https://hello-world.innocv.com/api/User") else { return }
             DispatchQueue.global().async {
                URLSession.shared.dataTask(with: fetchUsersUrl){

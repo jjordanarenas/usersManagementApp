@@ -18,6 +18,7 @@
 		6F7B453B28C7B1C60000EEB5 /* UsersManagementAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7B453A28C7B1C60000EEB5 /* UsersManagementAppUITestsLaunchTests.swift */; };
 		6F7B454928C7B2BB0000EEB5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7B454828C7B2BB0000EEB5 /* User.swift */; };
 		6F7B454D28C7B3EE0000EEB5 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7B454C28C7B3EE0000EEB5 /* APIService.swift */; };
+		6F7B455028C7B4DB0000EEB5 /* UserManagementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7B454F28C7B4DB0000EEB5 /* UserManagementViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		6F7B453A28C7B1C60000EEB5 /* UsersManagementAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersManagementAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		6F7B454828C7B2BB0000EEB5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		6F7B454C28C7B3EE0000EEB5 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		6F7B454F28C7B4DB0000EEB5 /* UserManagementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManagementViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,12 +105,12 @@
 		6F7B451628C7B1C40000EEB5 /* UsersManagementApp */ = {
 			isa = PBXGroup;
 			children = (
-				6F7B454B28C7B3CE0000EEB5 /* Service */,
-				6F7B454A28C7B3950000EEB5 /* ViewModel */,
 				6F7B454728C7B2A30000EEB5 /* Model */,
+				6F7B454B28C7B3CE0000EEB5 /* Service */,
+				6F7B454E28C7B49A0000EEB5 /* ViewController */,
+				6F7B454A28C7B3950000EEB5 /* ViewModel */,
 				6F7B451728C7B1C40000EEB5 /* AppDelegate.swift */,
 				6F7B451928C7B1C40000EEB5 /* SceneDelegate.swift */,
-				6F7B451B28C7B1C40000EEB5 /* ViewController.swift */,
 				6F7B451D28C7B1C40000EEB5 /* Main.storyboard */,
 				6F7B452028C7B1C60000EEB5 /* Assets.xcassets */,
 				6F7B452228C7B1C60000EEB5 /* LaunchScreen.storyboard */,
@@ -145,6 +147,7 @@
 		6F7B454A28C7B3950000EEB5 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				6F7B454F28C7B4DB0000EEB5 /* UserManagementViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -155,6 +158,14 @@
 				6F7B454C28C7B3EE0000EEB5 /* APIService.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		6F7B454E28C7B49A0000EEB5 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6F7B451B28C7B1C40000EEB5 /* ViewController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -290,6 +301,7 @@
 			files = (
 				6F7B454928C7B2BB0000EEB5 /* User.swift in Sources */,
 				6F7B454D28C7B3EE0000EEB5 /* APIService.swift in Sources */,
+				6F7B455028C7B4DB0000EEB5 /* UserManagementViewModel.swift in Sources */,
 				6F7B451C28C7B1C40000EEB5 /* ViewController.swift in Sources */,
 				6F7B451828C7B1C40000EEB5 /* AppDelegate.swift in Sources */,
 				6F7B451A28C7B1C40000EEB5 /* SceneDelegate.swift in Sources */,
