@@ -10,10 +10,13 @@ import UIKit
 
 class DetailPopupView: UIView {
     var userDetailViewModel = UserDetailViewModel()
+    var isEditing = false
 
     @IBOutlet var fullNameTextField: UITextField!
     @IBOutlet var datePicker: UIDatePicker!
-
+    @IBOutlet var idLabel: UILabel!
+    @IBOutlet var idTextField: UITextField!
+    
     class var identifier: String { return String(describing: self) }
 
     class func instanceFromNib() -> DetailPopupView {
@@ -31,8 +34,7 @@ class DetailPopupView: UIView {
     @IBAction func saveUser(_ sender: Any) {
         self.userDetailViewModel.nameDetail.value = self.fullNameTextField.text ?? ""
         self.userDetailViewModel.birthdateDetail.value = self.datePicker.date
-        self.userDetailViewModel.isCreatingNewUser = false
-        self.userDetailViewModel.updateUserWithId(self.userDetailViewModel.idDetail.value, name: self.userDetailViewModel.nameDetail.value, birthDate: self.userDetailViewModel.birthdateDetail.value)
+        self.userDetailViewModel.saveUser(self.userDetailViewModel.idDetail.value, name: self.userDetailViewModel.nameDetail.value, birthDate: self.userDetailViewModel.birthdateDetail.value)
     }
 
     private func bindings() {
@@ -44,5 +46,15 @@ class DetailPopupView: UIView {
             //self?.datePicker.date = Date(from: birthDay)
             self?.datePicker.date = Date()
         }
+    }
+
+    func isCreatingNewUser() {
+        self.idLabel.isHidden = !self.isEditing
+        self.idTextField.isHidden = !self.isEditing
+    }
+
+    func isEditingUser() {
+        self.idLabel.isHidden = self.isEditing
+        self.idTextField.isHidden = self.isEditing
     }
 }

@@ -8,12 +8,12 @@
 import Foundation
 
 class UserDetailViewModel {
-    var isCreatingNewUser = false
+    var isCreatingNewUser = true
     var idDetail = Observable<String>(value: "")
     var nameDetail = Observable<String>(value: "")
     var birthdateDetail = Observable<Date>(value: Date())
 
-    func updateUserWithId(_ id: String, name: String, birthDate: Date) {
+    func saveUser(_ id: String, name: String, birthDate: Date) {
         if isCreatingNewUser {
             APIService.addUser(id: Int(id) ?? 0, name: name, birthDate: birthDate){ success in
                 if !success {

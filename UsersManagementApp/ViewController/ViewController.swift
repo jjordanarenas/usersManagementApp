@@ -18,6 +18,7 @@ class ViewController: UIViewController {
         self.bindings()
         self.initializeTableView()
         self.viewModel.fetchUsers()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(self.addTapped))
     }
 
     private func bindings() {
@@ -30,5 +31,9 @@ class ViewController: UIViewController {
         self.userTableView.dataSource = self
         self.userTableView.delegate = self
         self.userTableView.register(CustomCell.nib, forCellReuseIdentifier: CustomCell.identifier)
+    }
+
+    @objc private func addTapped() {
+        self.showDetailPopup() 
     }
 }
