@@ -21,7 +21,8 @@ extension ViewController: UITableViewDataSource {
         let user = self.viewModel.userList.value[indexPath.row]
 
         unwrappedCell.nameLabel.text = user.name
-        unwrappedCell.idLabel.text = String(user.id)
+        unwrappedCell.idLabel.text = user.id
+        unwrappedCell.birthdayLabel.text = user.birthDate
         
         return unwrappedCell
     }
