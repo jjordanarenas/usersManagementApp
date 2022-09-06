@@ -31,6 +31,7 @@ class APIService {
                            users.forEach{ user in
                                print("User name:\(user.name) - id :\(user.id)")
                            }
+                           complete(true, users, error)
                        } catch{
                            print("Error fetching users \(error)")
                        }

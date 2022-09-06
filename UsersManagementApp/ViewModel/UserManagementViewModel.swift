@@ -8,11 +8,11 @@
 import Foundation
 
 class UserManagementViewModel {
-    var userList = [User]()
+    var userList = Observable<[User]>(value: [])
 
     func fetchUsers() {
         APIService.fetchUsers(complete: { [weak self] (success, userList, error) in
-            self?.userList = userList
+            self?.userList.value = userList
         })
     }
 }
