@@ -16,7 +16,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         self.bindings()
-        self.userTableView.dataSource = self
+        self.initializeTableView()
+
         self.viewModel.fetchUsers()
     }
 
@@ -24,5 +25,10 @@ class ViewController: UIViewController {
         self.viewModel.userList.addObserver(fireNow: false) { [weak self] userList in
             self?.userTableView.reloadData()
         }
+    }
+
+    private func initializeTableView() {
+        self.userTableView.dataSource = self
+        self.userTableView.register(CustomCell.nib, forCellReuseIdentifier: CustomCell.identifier)
     }
 }

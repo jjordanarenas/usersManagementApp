@@ -14,12 +14,15 @@ extension ViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.userTableView.dequeueReusableCell(withIdentifier: "userCell", for: indexPath)
+        let cell = self.userTableView.dequeueReusableCell(withIdentifier: CustomCell.identifier, for: indexPath) as? CustomCell
+        guard let unwrappedCell = cell else {
+            fatalError("Error on dequeueReusableCell")
+        }
         let user = self.viewModel.userList.value[indexPath.row]
 
-        cell.textLabel?.text = user.name
-        cell.detailTextLabel?.text = String(user.id)
-
-        return cell
+        unwrappedCell.nameLabel.text = user.name
+        unwrappedCell.idLabel.text = String(user.id)
+        
+        return unwrappedCell
     }
 }
