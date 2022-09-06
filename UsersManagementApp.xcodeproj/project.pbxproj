@@ -25,6 +25,9 @@
 		6F7B455B28C7C5A90000EEB5 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7B455A28C7C5A90000EEB5 /* CustomCell.swift */; };
 		6F7B455D28C7CCA50000EEB5 /* ViewController+UITableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7B455C28C7CCA50000EEB5 /* ViewController+UITableViewDelegate.swift */; };
 		6F7B455F28C7CF800000EEB5 /* UserDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7B455E28C7CF800000EEB5 /* UserDisplay.swift */; };
+		6F7B456328C7E1E00000EEB5 /* UserDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7B456228C7E1E00000EEB5 /* UserDetailViewModel.swift */; };
+		6F7B456528C7E2AA0000EEB5 /* DetailPopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F7B456428C7E2AA0000EEB5 /* DetailPopupView.xib */; };
+		6F7B456728C7E4FF0000EEB5 /* DetailPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7B456628C7E4FF0000EEB5 /* DetailPopupView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +70,9 @@
 		6F7B455A28C7C5A90000EEB5 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		6F7B455C28C7CCA50000EEB5 /* ViewController+UITableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+UITableViewDelegate.swift"; sourceTree = "<group>"; };
 		6F7B455E28C7CF800000EEB5 /* UserDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDisplay.swift; sourceTree = "<group>"; };
+		6F7B456228C7E1E00000EEB5 /* UserDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewModel.swift; sourceTree = "<group>"; };
+		6F7B456428C7E2AA0000EEB5 /* DetailPopupView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailPopupView.xib; sourceTree = "<group>"; };
+		6F7B456628C7E4FF0000EEB5 /* DetailPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPopupView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				6F7B454F28C7B4DB0000EEB5 /* UserManagementViewModel.swift */,
+				6F7B456228C7E1E00000EEB5 /* UserDetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -187,8 +194,9 @@
 		6F7B455128C7B83F0000EEB5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				6F7B456128C7E1260000EEB5 /* DetailPopup */,
+				6F7B456028C7E10F0000EEB5 /* MainStoryboard */,
 				6F7B455728C7C4E70000EEB5 /* CustomCell */,
-				6F7B451D28C7B1C40000EEB5 /* Main.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -208,6 +216,23 @@
 				6F7B455A28C7C5A90000EEB5 /* CustomCell.swift */,
 			);
 			path = CustomCell;
+			sourceTree = "<group>";
+		};
+		6F7B456028C7E10F0000EEB5 /* MainStoryboard */ = {
+			isa = PBXGroup;
+			children = (
+				6F7B451D28C7B1C40000EEB5 /* Main.storyboard */,
+			);
+			path = MainStoryboard;
+			sourceTree = "<group>";
+		};
+		6F7B456128C7E1260000EEB5 /* DetailPopup */ = {
+			isa = PBXGroup;
+			children = (
+				6F7B456428C7E2AA0000EEB5 /* DetailPopupView.xib */,
+				6F7B456628C7E4FF0000EEB5 /* DetailPopupView.swift */,
+			);
+			path = DetailPopup;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -315,6 +340,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F7B452428C7B1C60000EEB5 /* LaunchScreen.storyboard in Resources */,
+				6F7B456528C7E2AA0000EEB5 /* DetailPopupView.xib in Resources */,
 				6F7B452128C7B1C60000EEB5 /* Assets.xcassets in Resources */,
 				6F7B455928C7C5550000EEB5 /* CustomCell.xib in Resources */,
 				6F7B451F28C7B1C40000EEB5 /* Main.storyboard in Resources */,
@@ -348,10 +374,12 @@
 				6F7B455328C7B9110000EEB5 /* ViewController+UITableViewDataSource.swift in Sources */,
 				6F7B454928C7B2BB0000EEB5 /* User.swift in Sources */,
 				6F7B454D28C7B3EE0000EEB5 /* APIService.swift in Sources */,
+				6F7B456328C7E1E00000EEB5 /* UserDetailViewModel.swift in Sources */,
 				6F7B455B28C7C5A90000EEB5 /* CustomCell.swift in Sources */,
 				6F7B455028C7B4DB0000EEB5 /* UserManagementViewModel.swift in Sources */,
 				6F7B451C28C7B1C40000EEB5 /* ViewController.swift in Sources */,
 				6F7B451828C7B1C40000EEB5 /* AppDelegate.swift in Sources */,
+				6F7B456728C7E4FF0000EEB5 /* DetailPopupView.swift in Sources */,
 				6F7B451A28C7B1C40000EEB5 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

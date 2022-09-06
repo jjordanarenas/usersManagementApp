@@ -60,4 +60,128 @@ class APIService {
                }.resume()
             }
     }
+
+    static func editUser(id: Int, name: String, birthDate: Date, complete: @escaping ( _ success: Bool)->()) {
+        guard let editUserUrl = URL(string: "https://hello-world.innocv.com/api/User") else { return }
+
+        let userDataModel = User(name: name, birthDate: Date(), id: id)
+
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = [.prettyPrinted , .sortedKeys]
+        encoder.dateEncodingStrategy = .secondsSince1970
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+
+        encoder.dateEncodingStrategy = .formatted(dateFormatter)
+
+
+        guard let data = try? encoder.encode(userDataModel) else {
+            print("Error: Trying to convert userDataModel to JSON data")
+            return
+        }
+
+        do {
+            guard let jsonObject = try JSONSerialization.jsonObject(with: data) as? [String: Any] else {
+                              print("Error: Cannot convert data to JSON object")
+                              return
+                          }
+            guard let prettyJsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted) else {
+                print("Error: Cannot convert JSON object to Pretty JSON data")
+                return
+            }
+
+            var request = URLRequest(url: editUserUrl)
+            request.httpMethod = "PUT"
+            request.allHTTPHeaderFields = [
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            ]
+
+            URLSession.shared.uploadTask(with: request, from: prettyJsonData) { (responseData, response, error) in
+                if let error = error {
+                    print("Error making PUT request: \(error.localizedDescription)")
+                    complete(false)
+                    return
+                }
+
+                if let responseCode = (response as? HTTPURLResponse)?.statusCode, let responseData = responseData {
+                    guard responseCode == 200 else {
+                        print("Invalid response code: \(responseCode)")
+                        complete(false)
+                        return
+                    }
+
+                    if let responseJSONData = try? JSONSerialization.jsonObject(with: responseData, options: .allowFragments) {
+                        print("Response JSON data = \(responseJSONData)")
+                        complete(true)
+                    }
+                }
+            }.resume()
+        } catch{
+            print("Error editing user")
+        }
+    }
+
+    static func addUser(id: Int, name: String, birthDate: Date, complete: @escaping ( _ success: Bool)->()) {
+        guard let editUserUrl = URL(string: "https://hello-world.innocv.com/api/User") else { return }
+
+        let userDataModel = User(name: name, birthDate: Date(), id: id)
+
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = [.prettyPrinted , .sortedKeys]
+        encoder.dateEncodingStrategy = .secondsSince1970
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+
+        encoder.dateEncodingStrategy = .formatted(dateFormatter)
+
+
+        guard let data = try? encoder.encode(userDataModel) else {
+            print("Error: Trying to convert userDataModel to JSON data")
+            return
+        }
+
+        do {
+            guard let jsonObject = try JSONSerialization.jsonObject(with: data) as? [String: Any] else {
+                              print("Error: Cannot convert data to JSON object")
+                              return
+                          }
+            guard let prettyJsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted) else {
+                print("Error: Cannot convert JSON object to Pretty JSON data")
+                return
+            }
+
+            var request = URLRequest(url: editUserUrl)
+            request.httpMethod = "POST"
+            request.allHTTPHeaderFields = [
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            ]
+
+            URLSession.shared.uploadTask(with: request, from: prettyJsonData) { (responseData, response, error) in
+                if let error = error {
+                    print("Error making PUT request: \(error.localizedDescription)")
+                    complete(false)
+                    return
+                }
+
+                if let responseCode = (response as? HTTPURLResponse)?.statusCode, let responseData = responseData {
+                    guard responseCode == 200 else {
+                        print("Invalid response code: \(responseCode)")
+                        complete(false)
+                        return
+                    }
+
+                    if let responseJSONData = try? JSONSerialization.jsonObject(with: responseData, options: .allowFragments) {
+                        print("Response JSON data = \(responseJSONData)")
+                        complete(true)
+                    }
+                }
+            }.resume()
+        } catch{
+            print("Error editing user")
+        }
+    }
 }

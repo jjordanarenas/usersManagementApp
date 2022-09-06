@@ -8,9 +8,9 @@
 import Foundation
 
 struct User: Codable {
-    let id: Int
     let name: String?
     let birthDate: Date
+    let id: Int
 
     enum CodingKeys: String, CodingKey {
         case id = "id"

@@ -9,15 +9,14 @@ import UIKit
 
 class ViewController: UIViewController {
     @IBOutlet var userTableView: UITableView!
-
+    var detailPopup: DetailPopupView?
     let viewModel = UserManagementViewModel()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.bindings()
         self.initializeTableView()
-
         self.viewModel.fetchUsers()
     }
 
@@ -29,6 +28,7 @@ class ViewController: UIViewController {
 
     private func initializeTableView() {
         self.userTableView.dataSource = self
+        self.userTableView.delegate = self
         self.userTableView.register(CustomCell.nib, forCellReuseIdentifier: CustomCell.identifier)
     }
 }
