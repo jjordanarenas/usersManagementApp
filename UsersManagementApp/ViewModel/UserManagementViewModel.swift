@@ -10,7 +10,7 @@ import Foundation
 class UserManagementViewModel {
     var userList = Observable<[UserDisplay]>(value: [])
 
-    private let dateFormatter: DateFormatter = {
+    let dateFormatter: DateFormatter = {
       let dateFormatter = DateFormatter()
       dateFormatter.dateFormat = "dd/MM/yyyy"
       return dateFormatter

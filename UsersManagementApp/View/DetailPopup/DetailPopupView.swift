@@ -35,6 +35,15 @@ class DetailPopupView: UIView {
         self.userDetailViewModel.nameDetail.value = self.fullNameTextField.text ?? ""
         self.userDetailViewModel.birthdateDetail.value = self.datePicker.date
         self.userDetailViewModel.saveUser(self.userDetailViewModel.idDetail.value, name: self.userDetailViewModel.nameDetail.value, birthDate: self.userDetailViewModel.birthdateDetail.value)
+        self.closePopup()
+    }
+
+    @IBAction func closeDetailPopup(_ sender: Any) {
+        self.closePopup()
+    }
+
+    private func closePopup() {
+        self.isHidden = true
     }
 
     private func bindings() {
@@ -42,19 +51,24 @@ class DetailPopupView: UIView {
             self?.fullNameTextField.text = userName
         }
         self.userDetailViewModel.birthdateDetail.addObserver(fireNow: false) { [weak self] birthDay in
-            // TODO work properly with date
-            //self?.datePicker.date = Date(from: birthDay)
-            self?.datePicker.date = Date()
+            self?.datePicker.date = birthDay
         }
     }
 
     func isCreatingNewUser() {
-        self.idLabel.isHidden = !self.isEditing
-        self.idTextField.isHidden = !self.isEditing
+        self.idLabel.isHidden = false
+        self.idTextField.isHidden = false
+        self.fullNameTextField.text = ""
+        self.idTextField.text = ""
+        self.datePicker.date = Date()
+
+        self.isHidden = false
     }
 
     func isEditingUser() {
-        self.idLabel.isHidden = self.isEditing
-        self.idTextField.isHidden = self.isEditing
+        self.idLabel.isHidden = true
+        self.idTextField.isHidden = true
+
+        self.isHidden = false
     }
 }

@@ -8,8 +8,9 @@
 import Foundation
 
 class APIService {
+    static var API_URL = "https://hello-world.innocv.com/api/User"
     static func fetchUsers(complete: @escaping ( _ success: Bool, _ userList: [User], _ error: Error? )->()) {
-        guard let fetchUsersUrl = URL(string: "https://hello-world.innocv.com/api/User") else { return }
+        guard let fetchUsersUrl = URL(string: self.API_URL) else { return }
             DispatchQueue.global().async {
                URLSession.shared.dataTask(with: fetchUsersUrl){
                    data, response, error in
@@ -62,9 +63,9 @@ class APIService {
     }
 
     static func editUser(id: Int, name: String, birthDate: Date, complete: @escaping ( _ success: Bool)->()) {
-        guard let editUserUrl = URL(string: "https://hello-world.innocv.com/api/User") else { return }
+        guard let editUserUrl = URL(string: self.API_URL) else { return }
 
-        let userDataModel = User(name: name, birthDate: Date(), id: id)
+        let userDataModel = User(name: name, birthDate: birthDate, id: id)
 
         let encoder = JSONEncoder()
         encoder.outputFormatting = [.prettyPrinted , .sortedKeys]
@@ -124,9 +125,9 @@ class APIService {
     }
 
     static func addUser(id: Int, name: String, birthDate: Date, complete: @escaping ( _ success: Bool)->()) {
-        guard let editUserUrl = URL(string: "https://hello-world.innocv.com/api/User") else { return }
+        guard let editUserUrl = URL(string: self.API_URL) else { return }
 
-        let userDataModel = User(name: name, birthDate: Date(), id: id)
+        let userDataModel = User(name: name, birthDate: birthDate, id: id)
 
         let encoder = JSONEncoder()
         encoder.outputFormatting = [.prettyPrinted , .sortedKeys]

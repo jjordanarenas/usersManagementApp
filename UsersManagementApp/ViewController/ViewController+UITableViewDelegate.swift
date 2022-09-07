@@ -13,7 +13,6 @@ extension ViewController: UITableViewDelegate {
         return 100
     }
 
-
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let user = self.viewModel.userList.value[indexPath.row]
 
@@ -21,9 +20,9 @@ extension ViewController: UITableViewDelegate {
 
         self.detailPopup!.userDetailViewModel.nameDetail.value = user.name
         self.detailPopup!.userDetailViewModel.idDetail.value = user.id
-        self.detailPopup!.userDetailViewModel.birthdateDetail.value = Date()
-        // TODO work properly with date
-        //self.detailPopup!.userDetailViewModel.birthdateDetail.value = user.birthDate
+
+        let date = viewModel.dateFormatter.date(from: user.birthDate)!
+        self.detailPopup!.userDetailViewModel.birthdateDetail.value = date
     }
 
     private func initializeDetailPopup(isEditing: Bool) {
@@ -34,8 +33,10 @@ extension ViewController: UITableViewDelegate {
         }
 
         if isEditing {
+            self.detailPopup?.userDetailViewModel.isCreatingNewUser = false
             self.detailPopup?.isEditingUser()
         } else {
+            self.detailPopup?.userDetailViewModel.isCreatingNewUser = true
             self.detailPopup?.isCreatingNewUser()
         }
     }
@@ -43,9 +44,5 @@ extension ViewController: UITableViewDelegate {
     func showDetailPopup() {
         self.initializeDetailPopup(isEditing: false)
         self.detailPopup?.isHidden = false
-    }
-
-    func hideDetailPopup() {
-        self.detailPopup?.isHidden = true
     }
 }

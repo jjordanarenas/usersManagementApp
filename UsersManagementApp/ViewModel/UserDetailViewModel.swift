@@ -14,7 +14,7 @@ class UserDetailViewModel {
     var birthdateDetail = Observable<Date>(value: Date())
 
     func saveUser(_ id: String, name: String, birthDate: Date) {
-        if isCreatingNewUser {
+        if self.isCreatingNewUser {
             APIService.addUser(id: Int(id) ?? 0, name: name, birthDate: birthDate){ success in
                 if !success {
                     fatalError("Error updating user with id \(id)")

@@ -18,7 +18,7 @@ class ViewController: UIViewController {
         self.bindings()
         self.initializeTableView()
         self.viewModel.fetchUsers()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(self.addTapped))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "New User", style: .plain, target: self, action: #selector(self.addTapped))
     }
 
     private func bindings() {
