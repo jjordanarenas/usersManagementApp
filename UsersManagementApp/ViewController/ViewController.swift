@@ -9,6 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
     @IBOutlet var userTableView: UITableView!
+    @IBOutlet var searchBar: UISearchBar!
     var detailPopup: DetailPopupView?
     let viewModel = UserManagementViewModel()
     
@@ -18,6 +19,7 @@ class ViewController: UIViewController {
         self.bindings()
         self.initializeTableView()
         self.viewModel.fetchUsers()
+        self.searchBar.delegate = self
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "New User", style: .plain, target: self, action: #selector(self.addTapped))
     }
 
@@ -45,4 +47,6 @@ class ViewController: UIViewController {
     func addRightBarButtonItem() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "New User", style: .plain, target: self, action: #selector(self.addTapped))
     }
+
+
 }
