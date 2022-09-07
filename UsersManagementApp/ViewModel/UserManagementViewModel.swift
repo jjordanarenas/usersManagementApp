@@ -16,6 +16,7 @@ class UserManagementViewModel {
       return dateFormatter
     }()
 
+    // MARK: - Public functions
     func fetchUsers() {
         APIService.fetchUsers(complete: { [weak self] (success, userList, error) in
             self?.userList.value = userList.map {

@@ -25,26 +25,4 @@ extension ViewController: UITableViewDelegate {
         let date = viewModel.dateFormatter.date(from: user.birthDate)!
         self.detailPopup!.userDetailViewModel.birthdateDetail.value = date
     }
-
-    private func initializeDetailPopup(isEditing: Bool) {
-        if self.detailPopup == nil {
-            self.detailPopup = DetailPopupView.instanceFromNib()
-            self.detailPopup!.frame = self.view.frame
-            self.view.addSubview(self.detailPopup!)
-            self.detailPopup?.userDetailViewModel.delegate = self
-        }
-
-        if isEditing {
-            self.detailPopup?.userDetailViewModel.isCreatingNewUser = false
-            self.detailPopup?.isEditingUser()
-        } else {
-            self.detailPopup?.userDetailViewModel.isCreatingNewUser = true
-            self.detailPopup?.isCreatingNewUser()
-        }
-    }
-
-    func showDetailPopup() {
-        self.initializeDetailPopup(isEditing: false)
-        self.detailPopup?.isHidden = false
-    }
 }

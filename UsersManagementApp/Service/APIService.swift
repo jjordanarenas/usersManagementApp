@@ -9,6 +9,8 @@ import Foundation
 
 class APIService {
     static var API_URL = "https://hello-world.innocv.com/api/User"
+
+    // MARK: - Fetch users
     static func fetchUsers(complete: @escaping ( _ success: Bool, _ userList: [User], _ error: Error? )->()) {
         guard let fetchUsersUrl = URL(string: self.API_URL) else { return }
             DispatchQueue.global().async {
@@ -38,6 +40,7 @@ class APIService {
             }
     }
 
+    // MARK: - Delete user
     static func deleteUser(id: String, complete: @escaping ( _ success: Bool)->()) {
         guard let deleteUserUrl = URL(string: self.API_URL + "/\(id)") else { return }
             var request = URLRequest(url: deleteUserUrl)
@@ -60,6 +63,7 @@ class APIService {
             }
     }
 
+    // MARK: - Edit user
     static func editUser(id: Int, name: String, birthDate: Date, complete: @escaping ( _ success: Bool)->()) {
         guard let editUserUrl = URL(string: self.API_URL) else { return }
 
@@ -119,6 +123,7 @@ class APIService {
         }
     }
 
+    // MARK: - Add user
     static func addUser(id: Int, name: String, birthDate: Date, complete: @escaping ( _ success: Bool)->()) {
         guard let editUserUrl = URL(string: self.API_URL) else { return }
 
