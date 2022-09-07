@@ -20,7 +20,7 @@ class UserDetailViewModel {
                 if !success {
                     fatalError("Error updating user with id \(id)")
                 } else {
-                    self.delegate?.userAddedOrEditedSuccessfully(id: id, name: name, birthDate: birthDate)
+                    self.delegate?.userAddedOrEditedSuccessfully()
                 }
             }
         } else {
@@ -28,7 +28,7 @@ class UserDetailViewModel {
                 if !success {
                     fatalError("Error updating user with id \(id)")
                 } else {
-                    self.delegate?.userAddedOrEditedSuccessfully(id: id, name: name, birthDate: birthDate)
+                    self.delegate?.userAddedOrEditedSuccessfully()
                 }
             }
         }

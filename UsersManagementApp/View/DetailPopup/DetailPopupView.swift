@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol UserDetailContract {
-    func userAddedOrEditedSuccessfully(id: String, name: String, birthDate: Date)
+    func userAddedOrEditedSuccessfully()
     func closeDetailPopup()
 }
 

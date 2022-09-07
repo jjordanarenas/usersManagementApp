@@ -47,20 +47,4 @@ extension ViewController: UITableViewDelegate {
         self.initializeDetailPopup(isEditing: false)
         self.detailPopup?.isHidden = false
     }
-
-
-}
-
-extension ViewController: UserDetailContract {
-    func userAddedOrEditedSuccessfully(id: String, name: String, birthDate: Date) {
-        /*let date = self.viewModel.dateFormatter.string(from: birthDate)
-        let user = UserDisplay(id: id, name: name, birthDate: date)
-        self.viewModel.userList.value.append(user)*/
-        //self.detailPopup?.isHidden = true
-
-    }
-
-    func closeDetailPopup() {
-        self.addRightBarButtonItem()
-    }
 }
