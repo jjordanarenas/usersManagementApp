@@ -16,7 +16,7 @@ class APIService {
                    data, response, error in
 
                    if error != nil {
-                       print(error?.localizedDescription)
+                       print(error?.localizedDescription ?? "Error fetching users")
                        return
                    }
 
@@ -39,7 +39,7 @@ class APIService {
     }
 
     static func deleteUser(id: String, complete: @escaping ( _ success: Bool)->()) {
-        guard let deleteUserUrl = URL(string: "https://hello-world.innocv.com/api/User/\(id)") else { return }
+        guard let deleteUserUrl = URL(string: self.API_URL + "/\(id)") else { return }
             var request = URLRequest(url: deleteUserUrl)
             request.httpMethod = "DELETE"
             DispatchQueue.global().async {
@@ -47,16 +47,14 @@ class APIService {
                    data, response, error in
 
                    if error != nil {
-                       print(error?.localizedDescription)
+                       print(error?.localizedDescription ?? "Error deleting user")
                        return
                    }
 
-                   if let data = data {
-                       do {
-                           complete(true)
-                       } catch{
-                           print("Error fetching users \(error)")
-                       }
+                   if data != nil {
+                       complete(true)
+                   } else {
+                       complete(false)
                    }
                }.resume()
             }
@@ -106,17 +104,14 @@ class APIService {
                     return
                 }
 
-                if let responseCode = (response as? HTTPURLResponse)?.statusCode, let responseData = responseData {
+                if let responseCode = (response as? HTTPURLResponse)?.statusCode, let _ = responseData {
                     guard responseCode == 200 else {
                         print("Invalid response code: \(responseCode)")
                         complete(false)
                         return
                     }
 
-                    if let responseJSONData = try? JSONSerialization.jsonObject(with: responseData, options: .allowFragments) {
-                        print("Response JSON data = \(responseJSONData)")
-                        complete(true)
-                    }
+                    complete(true)
                 }
             }.resume()
         } catch{
@@ -168,17 +163,14 @@ class APIService {
                     return
                 }
 
-                if let responseCode = (response as? HTTPURLResponse)?.statusCode, let responseData = responseData {
+                if let responseCode = (response as? HTTPURLResponse)?.statusCode, let _ = responseData {
                     guard responseCode == 200 else {
                         print("Invalid response code: \(responseCode)")
                         complete(false)
                         return
                     }
 
-                    if let responseJSONData = try? JSONSerialization.jsonObject(with: responseData, options: .allowFragments) {
-                        print("Response JSON data = \(responseJSONData)")
-                        complete(true)
-                    }
+                    complete(true)
                 }
             }.resume()
         } catch{

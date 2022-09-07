@@ -17,6 +17,7 @@ class UserManagementViewModel {
     }()
 
     func fetchUsers() {
+        // TODO instead of fetching user on edit/add, append new User to userList
         APIService.fetchUsers(complete: { [weak self] (success, userList, error) in
             self?.userList.value = userList.map {
                 UserDisplay(id: String($0.id), name: $0.name ?? "", birthDate: self?.dateFormatter.string(from: $0.birthDate) ?? "")
