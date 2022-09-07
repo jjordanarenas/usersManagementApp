@@ -19,7 +19,7 @@ extension ViewController: UITableViewDataSource {
             fatalError("Error on dequeueReusableCell")
         }
         let user = self.viewModel.userList.value[indexPath.row]
-
+        unwrappedCell.selectionStyle = .none
         unwrappedCell.nameLabel.text = user.name
         unwrappedCell.idLabel.text = user.id
         unwrappedCell.birthdayLabel.text = user.birthDate

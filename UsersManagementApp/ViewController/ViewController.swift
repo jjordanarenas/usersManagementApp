@@ -34,6 +34,15 @@ class ViewController: UIViewController {
     }
 
     @objc private func addTapped() {
+        self.hideRightBarButtonItem() 
         self.showDetailPopup() 
+    }
+
+    func hideRightBarButtonItem() {
+        navigationItem.rightBarButtonItem = nil
+    }
+
+    func addRightBarButtonItem() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "New User", style: .plain, target: self, action: #selector(self.addTapped))
     }
 }

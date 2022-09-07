@@ -8,10 +8,15 @@
 import Foundation
 import UIKit
 
+protocol UserDetailContract {
+    func userAddedOrEditedSuccessfully(id: String, name: String, birthDate: Date)
+    func closeDetailPopup()
+}
+
 class DetailPopupView: UIView {
     var userDetailViewModel = UserDetailViewModel()
     var isEditing = false
-
+    
     @IBOutlet var fullNameTextField: UITextField!
     @IBOutlet var datePicker: UIDatePicker!
     @IBOutlet var idLabel: UILabel!
@@ -44,6 +49,7 @@ class DetailPopupView: UIView {
 
     private func closePopup() {
         self.isHidden = true
+        self.userDetailViewModel.delegate?.closeDetailPopup()
     }
 
     private func bindings() {

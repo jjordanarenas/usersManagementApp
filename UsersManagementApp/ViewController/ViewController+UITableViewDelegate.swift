@@ -16,6 +16,7 @@ extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let user = self.viewModel.userList.value[indexPath.row]
 
+        self.hideRightBarButtonItem() 
         self.initializeDetailPopup(isEditing: true)
 
         self.detailPopup!.userDetailViewModel.nameDetail.value = user.name
@@ -30,6 +31,7 @@ extension ViewController: UITableViewDelegate {
             self.detailPopup = DetailPopupView.instanceFromNib()
             self.detailPopup!.frame = self.view.frame
             self.view.addSubview(self.detailPopup!)
+            self.detailPopup?.userDetailViewModel.delegate = self
         }
 
         if isEditing {
@@ -44,5 +46,21 @@ extension ViewController: UITableViewDelegate {
     func showDetailPopup() {
         self.initializeDetailPopup(isEditing: false)
         self.detailPopup?.isHidden = false
+    }
+
+
+}
+
+extension ViewController: UserDetailContract {
+    func userAddedOrEditedSuccessfully(id: String, name: String, birthDate: Date) {
+        /*let date = self.viewModel.dateFormatter.string(from: birthDate)
+        let user = UserDisplay(id: id, name: name, birthDate: date)
+        self.viewModel.userList.value.append(user)*/
+        //self.detailPopup?.isHidden = true
+
+    }
+
+    func closeDetailPopup() {
+        self.addRightBarButtonItem()
     }
 }
